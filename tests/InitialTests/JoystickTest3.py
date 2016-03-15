@@ -43,24 +43,33 @@ while keepLooping:
     if v_R < 10 and v_R > -10:
         v_R = 0
 
-    # Gets the current button state
-    button_x = my_joystick.get_button(0)
-    button_circle = my_joystick.get_button(1)
-    button_square = my_joystick.get_button(2)
-    button_triangle = my_joystick.get_button(3)
-    button_left_index = my_joystick.get_button(4)
-    button_right_index = my_joystick.get_button(5)
-    button_select = my_joystick.get_button(6)
-    button_start = my_joystick.get_button(7)
-    button_left_joystick = my_joystick.get_button(8)
-    button_right_joystick = my_joystick.get_button(9)
 
-    # Prints the status of the controller
-    print('Joysticks')
-    print(h_L,v_L,trigger,h_R,v_R)
-    print('Buttons:')
-    print(button_x,button_circle,button_square,button_triangle,button_left_index,button_right_index,button_select,
-        button_start,button_left_joystick,button_right_joystick)
+    ##### PS 3 CONTROLLER
+    # # Gets the current button state
+    # button_x = my_joystick.get_button(0)
+    # button_circle = my_joystick.get_button(1)
+    # button_square = my_joystick.get_button(2)
+    # button_triangle = my_joystick.get_button(3)
+    # button_left_index = my_joystick.get_button(4)
+    # button_right_index = my_joystick.get_button(5)
+    # button_select = my_joystick.get_button(6)
+    # button_start = my_joystick.get_button(7)
+    # button_left_joystick = my_joystick.get_button(8)
+    # button_right_joystick = my_joystick.get_button(9)
+    #
+    # # Prints the status of the controller
+    # print('Joysticks')
+    # print(h_L,v_L,trigger,h_R,v_R)
+    # print('Buttons:')
+    # print(button_x,button_circle,button_square,button_triangle,button_left_index,button_right_index,button_select,
+    #     button_start,button_left_joystick,button_right_joystick)
 
+    print('------------------------')
+    print(my_joystick.get_axis(0))
+    print(my_joystick.get_axis(1))
+    print(my_joystick.get_axis(2))
+    print(my_joystick.get_axis(3))
+    print(my_joystick.get_axis(4))
+    print(my_joystick.get_axis(5))
 
     time.sleep(1)
