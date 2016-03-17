@@ -24,12 +24,14 @@ while keepLooping:
     h_L = math.floor(my_joystick.get_axis(0)*1000)
     v_L = math.floor(my_joystick.get_axis(1)*1000)
 
-    # Trigger axes
-    trigger = math.floor(my_joystick.get_axis(2)*1000)
-
     # Right joystick axes
-    h_R = math.floor(my_joystick.get_axis(3)*1000)
-    v_R = math.floor(my_joystick.get_axis(4)*1000)
+    h_R = math.floor(my_joystick.get_axis(2)*1000)
+    v_R = math.floor(my_joystick.get_axis(3)*1000)
+
+    # Trigger axes
+    trigger_L = math.floor(my_joystick.get_axis(4)*1000)
+    trigger_R = math.floor(my_joystick.get_axis(5)*1000)
+    trigger = -(trigger_L+1)/2+(trigger_R+1)/2
 
     # Checks the values of the joysticks and triggers and zeros them if they are close to zero
     if h_L < 10 and h_L > -10:
@@ -71,5 +73,6 @@ while keepLooping:
     print(my_joystick.get_axis(3))
     print(my_joystick.get_axis(4))
     print(my_joystick.get_axis(5))
+    print('Trigger: {}'.format(trigger))
 
     time.sleep(1)
