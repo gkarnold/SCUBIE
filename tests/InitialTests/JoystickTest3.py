@@ -33,6 +33,10 @@ while keepLooping:
     trigger_R = math.floor(my_joystick.get_axis(5)*1000)
     trigger = -(trigger_L+1)/2+(trigger_R+1)/2
 
+    # Gets index finger buttons
+    index_L = my_joystick.get_button(8)
+    index_R = my_joystick.get_button(9)
+
     # Checks the values of the joysticks and triggers and zeros them if they are close to zero
     if h_L < 10 and h_L > -10:
         h_L = 0
@@ -74,5 +78,8 @@ while keepLooping:
     print(my_joystick.get_axis(4))
     print(my_joystick.get_axis(5))
     print('Trigger: {}'.format(trigger))
+    print(index_L)
+    print(index_R)
+
 
     time.sleep(1)
