@@ -42,7 +42,7 @@ while keepLooping:
     # Combines the two triggers into a single trigger value for vertical control
     trigger = -(trigger_L+1)/2+(trigger_R+1)/2
 
-    # Checks the values of the joysticks and triggers and zeros them if they are close to zero or axes them if they are close to max
+    # Checks the values of the joysticks and triggers and zeros them if they are close to zero or maxes them if they are close to max
     if v_L < 10 and v_L > -10:
         v_L = 0
     if v_L > 95:

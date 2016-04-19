@@ -6,14 +6,14 @@
 */
 
 // Includes
-#include <Wire.h>
-#include "MS5837.h"
-#include <Servo.h>
+#include <Wire.h> // Imports wire functionality
+#include "MS5837.h" // Imports the pressure sensor library from Blue Robotics
+#include <Servo.h> // Import servo funtionality
 
 // Sets up the pressure sensor which will use inputs A4 and A5
 MS5837 pressureSensor;
 
-// Sets up the vertical esc servo
+// Sets up the left and right esc servos
 Servo leftESC;
 Servo rightESC;
 
@@ -53,12 +53,6 @@ void setup() {
 // Main Loop
 void loop() {
 
-//  // Sets the input size
-//  int inputSize = 4;
-//
-//  // Sets up the character inputs
-//  char input[inputSize];
-
   // Checks to see if there are any commands coming down the serial connection
   if (Serial.available()) {
 
@@ -80,13 +74,13 @@ void loop() {
     rightChar = Serial.readStringUntil('R');
     verticalChar = Serial.readStringUntil('V');
 
-    // Convers the strings to integers (-1 is since the axis are fliped on the controller)
+    // Convers the strings to integers
     float leftValue = 1 * atoi(leftChar.c_str());
     float rightValue = 1 * atoi(rightChar.c_str());
     float verticalValue = 1 * atoi(verticalChar.c_str());
 
     // Combines the data read together so that it can be sent back to Python to confirm the loop
-        String combinedChar = leftChar + 'L' + rightChar + 'R' + verticalChar + 'V';
+    String combinedChar = leftChar + 'L' + rightChar + 'R' + verticalChar + 'V';
 
     // Sends the desired throttle percentage to the horizontal ESCs
     int leftValueMap= map(leftValue, -100, 100, 0, 179);
@@ -95,28 +89,10 @@ void loop() {
     rightESC.write(rightValueMap);
     Serial.println(leftValueMap);
 
-//    analogWrite(leftPin, 255 / 2 + 255 / 2 * abs(leftValue) / 100);
-//    analogWrite(rightPin, 255 / 2 + 255 / 2 * abs(rightValue) / 100);
 
-    // Vertical ESC controls
-//    analogWrite(verticalPin,255/2 + 255/2*abs(verticalValue) / 100);
-//    Serial.println(255/2 + 255/2*abs(verticalValue) / 100);
-//    analogWrite(verticalPin,255);
-//    Serial.println(255);
-
-//    // Code for forwward and reverse
-//    if (verticalValue >= 0)
-//    {
-//      analogWrite(reversePin, 0);
-//      analogWrite(verticalPin,255/2 + 255/2*abs(verticalValue) / 100);
-//      Serial.println(0);
-//    }
-//    else
-//    {
-//      analogWrite(reversePin, 255);
-//      analogWrite(verticalPin,255/2 + 255/2*abs(verticalValue) / 100);
-//      Serial.println(255);
-//    } 
+    //Vertical ESC controls
+    analogWrite(verticalPin,255/2 + 255/2*abs(verticalValue) / 100);
+    Serial.println(255/2 + 255/2*abs(verticalValue) / 100);
 
   }
 
